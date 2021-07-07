@@ -1,0 +1,51 @@
+<style>
+  .dashboard{
+    padding: 100px;
+  }
+</style>
+<div>
+<div class="row">
+  <div class="col-lg-12">
+    <form (ngSubmit)="onSubmitItem(f)"
+    #f="ngForm">
+      <div class="row">
+        <div class="col-lg-7 form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            class="form-control"
+            name="name"
+            allowAlpha
+            ngModel
+            required
+            autocomplete="off"
+
+            >
+            <span class="ng-block"></span>
+        </div>
+        <div class="col-lg-5 form-group">
+          <label for="amount">Amount</label>
+          <input
+            type="number"
+            id="amount"
+            class="form-control"
+            name="amount"
+            ngModel
+            pattern="^[1-9]+[0-9]*$"
+            required
+            >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <button class="btn btn-success" [disabled]="!f.valid" type="submit">{{editMode ? 'Update':'Add'}}</button>
+          {{editMode ?'|':''}}
+          <button class="btn btn-danger" type="button" *ngIf="editMode" (click)="onDelete()">Delete</button> |
+          <button class="btn btn-primary" type="button" (click)="onClear()">Clear</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
